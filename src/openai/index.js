@@ -5,7 +5,8 @@ import dotenv from 'dotenv'
 const env = dotenv.config().parsed // 环境参数
 
 const configuration = new Configuration({
-  apiKey: env.OPENAI_API_KEY,
+  // apiKey: env.OPENAI_API_KEY,
+  apiKey: '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',
 })
 const openai = new OpenAIApi(configuration)
 
