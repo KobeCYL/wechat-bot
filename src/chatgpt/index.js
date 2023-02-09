@@ -13,16 +13,17 @@ const config = {
   accessToken: env.CHATGPT_ACCESS_TOKEN, // 在用户授权情况下，访问https://chat.openai.com/api/auth/session，获取accesstoken
 }
 const api = new ChatGPTAPI(config)
-
 // 获取 chatGPT 的回复
 export async function getChatGPTReply(content) {
   await api.ensureAuth()
+
   console.log('🚀🚀🚀 / content', content)
   // 调用ChatGPT的接口
   const reply = await api.sendMessage(content, {
     //  "ChatGPT 请求超时！最好开下全局代理。"
     timeoutMs: 2 * 60 * 1000,
   })
+
   console.log('🚀🚀🚀 / reply', reply)
   return reply
 

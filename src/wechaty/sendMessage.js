@@ -1,7 +1,7 @@
 // import { getChatGPTReply as getReply } from '../chatgpt/index.js'
 import { getOpenAiReply as getReply } from '../openai/index.js'
 import { botName, roomWhiteList, aliasWhiteList } from '../../config.js'
-
+import moment from 'moment'
 /**
  * 默认消息发送
  * @param msg
@@ -21,9 +21,13 @@ export async function defaultMessage(msg, bot) {
   const isRoom = (roomWhiteList.includes(roomName) || true) && content.includes(`${botName}`) // 是否在群聊白名单内并且艾特了机器人
   const isAlias = aliasWhiteList.includes(remarkName) || aliasWhiteList.includes(name) || true // 发消息的人是否在联系人白名单内
   const isBotSelf = botName === remarkName || botName === name // 是否是机器人自己
-  console.log(roomName,remarkName,name, content)
+ 
+  const sendTime = moment(msg.date()),
+    nowTime = moment(new Date())
+  const isNowSend = nowTime.diff(sendTime, 'minute') < 15;
   // TODO 你们可以根据自己的需求修改这里的逻辑
-  if (isText && !isBotSelf) {
+  if (isText && !isBotSelf && isNowSend) {
+    console.log(roomName, remarkName, name, 'sendTime',content, msg.date(),"now",new Date())
     try {
       // 区分群聊和私聊
       if (isRoom && room) {
