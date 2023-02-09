@@ -22,12 +22,14 @@ export async function defaultMessage(msg, bot) {
   const isAlias = aliasWhiteList.includes(remarkName) || aliasWhiteList.includes(name) || true // 发消息的人是否在联系人白名单内
   const isBotSelf = botName === remarkName || botName === name // 是否是机器人自己
  
+
   const sendTime = moment(msg.date()),
     nowTime = moment(new Date())
   const isNowSend = nowTime.diff(sendTime, 'minute') < 15;
+  console.log('sendTime', msg.date(),"now",new Date(), 'isNowSend', isNowSend)
   // TODO 你们可以根据自己的需求修改这里的逻辑
   if (isText && !isBotSelf && isNowSend) {
-    console.log(roomName, remarkName, name, 'sendTime',content, msg.date(),"now",new Date())
+    console.log(roomName, remarkName, name,content)
     try {
       // 区分群聊和私聊
       if (isRoom && room) {
