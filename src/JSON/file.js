@@ -3,11 +3,15 @@
 // Get data from ./lib.json
 // const fs = require('fs')
 import fs from 'fs'
+ 
+import { dirname,join } from 'path'
+import { fileURLToPath } from 'url'
+
+const __dirname = dirname(fileURLToPath(import.meta.url))
 export function getDataFromLibJson(key) {
   let libJsonData
-
   try {
-    const fileBuffer = fs.readFileSync('./lib.json')
+    const fileBuffer = fs.readFileSync(join(__dirname,'./lib.json'))
     libJsonData = JSON.parse(fileBuffer)
   } catch (err) {
     console.log(err)
@@ -21,19 +25,20 @@ export function getDataFromLibJson(key) {
 // Add data to ./lib.json
 export function addDataToLibJson(key, data, resourceType = 'Array') {
   let libJsonData
-
+  console.log('key,data', key,data)
   try {
-    const fileBuffer = fs.readFileSync('./lib.json')
+    const fileBuffer = fs.readFileSync(join(__dirname,'./lib.json'))
     libJsonData = JSON.parse(fileBuffer)
 
     // Add data to existing object in the json file and stringify it back to json format before writing it back to the file.
     if (resourceType === 'Array') {
       libJsonData[key] = libJsonData[key] || []
 
-      if (Array.isArray(data)) {
+      if (Array.isArray(data), data.length > 0) {
+        libJsonData[key].push(...data)
         libJsonData = {
           ...libJsonData,
-          [key]: [...libJsonData[key], ...data],
+          [key]: libJsonData[key],
         }
       } else {
         libJsonData = {
@@ -57,6 +62,7 @@ export function addDataToLibJson(key, data, resourceType = 'Array') {
         [key]: data,
       }
     }
+    console.log('newLibJsonData', libJsonData)
 
     const stringifiedLibJsonData = JSON.stringify(libJsonData)
 
