@@ -6,7 +6,7 @@ const env = dotenv.config().parsed // 环境参数
 
 const configuration = new Configuration({
   // apiKey: env.OPENAI_API_KEY,
-  apiKey: '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',
+  apiKey: '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',
 })
 const openai = new OpenAIApi(configuration)
 let i = 0
@@ -19,7 +19,7 @@ export async function getOpenAiReply(prompt) {
       model: 'text-davinci-003',
       prompt: prompt,
       temperature: 0.9, // 每次返回的答案的相似度0-1（0：每次都一样，1：每次都不一样）
-      max_tokens: 1000,
+      max_tokens: 2000,
       top_p: 1,
       frequency_penalty: 0.0,
       presence_penalty: 0.6,

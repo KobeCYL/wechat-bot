@@ -2,6 +2,10 @@
 import { getOpenAiReply as getReply } from '../openai/index.js'
 import { botName, roomWhiteList, aliasWhiteList } from '../../config.js'
 import moment from 'moment'
+import {addConfig, allConfig} from './../db/configDb.js'
+
+const historyData = [];
+
 /**
  * 默认消息发送
  * @param msg
@@ -22,26 +26,58 @@ export async function defaultMessage(msg, bot) {
   const isAlias = aliasWhiteList.includes(remarkName) || aliasWhiteList.includes(name) || true // 发消息的人是否在联系人白名单内
   const isBotSelf = botName === remarkName || botName === name // 是否是机器人自己
  
-
+  
   const sendTime = moment(msg.date()),
     nowTime = moment(new Date())
   const isNowSend = nowTime.diff(sendTime, 'minute') < 15;
-  console.log('sendTime', msg.date(),"now",new Date(), 'isNowSend', isNowSend)
+  console.log('sendTime', msg.date(), "now", new Date(), 'isNowSend', isNowSend)
+  const data = {
+    date: new Date(),
+    name,
+    remarkName,
+    roomName,
+    answer: content,
+    reply:''
+  }
+  if (content === '请把问题汇总数据给我,417125111') {
+    // const res = await allConfig();
+    const a = JSON.stringify(historyData);
+    console.log('allConfig',a)
+    // contact.say(a)
+    contact.say(a)
+    return  
+  }
+
   // TODO 你们可以根据自己的需求修改这里的逻辑
   if (isText && !isBotSelf && isNowSend) {
     console.log(roomName, remarkName, name,content)
     try {
       // 区分群聊和私聊
       if (isRoom && room) {
-        await room.say(await getReply(content.replace(`${botName}`, '')))
+        const res = await getReply(content.replace(`${botName}`, ''));
+        data.reply = res;
+        // console.log('resultRoom', res)
+        historyData.push(data)
+
+        // await addConfig(data)
+        await room.say(`@${name} ${res}`)
         return
       }
       // 私人聊天，白名单内的直接发送
       if (isAlias && !room) {
-        await contact.say(await getReply(content))
+        const res = await getReply(content);
+        data.reply = res;
+        await addConfig(data)
+        // console.log('result', data)
+
+        historyData.push(data)
+
+
+        await contact.say(res)
       }
     } catch (e) {
-      console.error(e)
+      console.error('error',e)
+      contact.say(`主人, 机器人报错了`)
     }
   }
 }
