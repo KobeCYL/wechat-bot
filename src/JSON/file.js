@@ -66,7 +66,7 @@ export function addDataToLibJson(key, data, resourceType = 'Array') {
 
     const stringifiedLibJsonData = JSON.stringify(libJsonData)
 
-    fs.writeFileSync('./lib.json', stringifiedLibJsonData)
+    fs.writeFileSync(join(__dirname,'./lib.json'), stringifiedLibJsonData)
   } catch (err) {
     console.log(err) // Log any errors that occur while trying to read or write the file
   }
