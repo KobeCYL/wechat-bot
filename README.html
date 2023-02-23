@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>WeChat Bot</title>
+        <style>
+/* From extension vscode.github */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+.vscode-dark img[src$=\#gh-light-mode-only],
+.vscode-light img[src$=\#gh-dark-mode-only] {
+	display: none;
+}
+
+</style>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.css">
+<link href="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.css" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+<style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;
+                font-size: 14px;
+                line-height: 1.6;
+            }
+        </style>
+        <style>
+.task-list-item {
+    list-style-type: none;
+}
+
+.task-list-item-checkbox {
+    margin-left: -20px;
+    vertical-align: middle;
+    pointer-events: none;
+}
+</style>
+        
+    </head>
+    <body class="vscode-body vscode-light">
+        <h1 id="wechat-bot">WeChat Bot</h1>
+<p><img src="https://assets.fedtop.com/picbed/202212131123257.png" alt=""></p>
+<p>一个 基于 <code>chatgpt</code> + <code>wechaty</code> 的微信机器人</p>
+<p>可以用来帮助你自动回复微信消息，或者管理微信群/好友.</p>
+<p><code>简单</code>，<code>好用</code>，<code>2分钟（4 个步骤）</code> 就能玩起来了。🌸 如果对您有所帮助，请点个 Star ⭐️ 支持一下。</p>
+<h2 id="近期的改动">近期的改动</h2>
+<h3 id="1213-更新">12.13 更新</h3>
+<p>不少人今天运行不了，参考这条 <a href="https://github.com/wangrongding/wechat-bot/issues/54#issuecomment-1347880291">issue</a> ,暂时这样处理下，有好的方案大家可以提出来，谢谢~</p>
+<h3 id="1212-更新">12.12 更新</h3>
+<ul>
+<li><code>OpenAI Chatgpt</code> 因为一些原因，对接口访问添加了一系列的限制。具体可以看这里：<a href="https://github.com/transitive-bullshit/chatgpt-api#update-december-11-2022">问题详情</a>，所以我改用官方自己的了，目前机器人可用。</li>
+</ul>
+<h2 id="开发">开发</h2>
+<ol>
+<li>检查好自己的开发环境，确保已经安装了 <code>nodejs</code> , 版本需要满足 Node.js &gt;= v18.0 ，版本太低会导致运行报错,最好使用 LTS 版本。</li>
+<li>先获取自己的 <code>api key</code>，地址戳这里 👉🏻 ：<a href="https://beta.openai.com/account/api-keys">创建你的 api key</a></li>
+</ol>
+<p><img src="https://assets.fedtop.com/picbed/202212121817351.png" alt=""></p>
+<ol start="3">
+<li>创建完了， 复制下来，然后在项目根目录下创建一个 <code>.env</code> 文件，内容如下：</li>
+</ol>
+<pre><code class="language-sh"><span class="hljs-comment"># 执行下面命令，拷贝一份 .env.example 文件</span>
+<span class="hljs-built_in">cp</span> .env.example .<span class="hljs-built_in">env</span>
+<span class="hljs-comment"># 完善.env 文件内容</span>
+OPENAI_API_KEY=<span class="hljs-string">&#x27;你的key&#x27;</span>
+</code></pre>
+<ol start="4">
+<li>运行服务</li>
+</ol>
+<blockquote>
+<p>安装依赖时，大陆的朋友推荐切到 taobao 镜像源后再安装，要不然可能会因为依赖安装不完整导致出错， 推荐使用我的工具 👉🏻 <a href="https://github.com/wangrongding/prm-cli">prm-cli</a> 快速切换。</p>
+</blockquote>
+<pre><code class="language-sh"><span class="hljs-comment"># 安装依赖</span>
+npm i
+<span class="hljs-comment"># 启动服务</span>
+npm run dev
+</code></pre>
+<p>然后就可以扫码登录了，然后根据你的需求，自己修改相关逻辑文件。</p>
+<p><img src="https://assets.fedtop.com/picbed/202212071315670.png" alt=""></p>
+<h2 id="你要修改的">你要修改的</h2>
+<p>很多人说运行后不会自动收发信息，不是的哈，为了防止给每一条收到的消息都自动回复（太恐怖了），所以加了限制条件。</p>
+<p>你要把下面提到的地方自定义修改下。</p>
+<ul>
+<li>群聊，记得把机器人名称改成你自己微信号的名称，然后添加对应群聊的名称到白名单中，这样就可以自动回复群聊消息了。</li>
+<li>私聊，记得把需要自动回复的好友名称添加到白名单中，这样就可以自动回复私聊消息了。</li>
+</ul>
+<p>文件是 👉🏻 <a href="./src/sendMessage.js">sendMessage.js</a></p>
+<p><img src="https://assets.fedtop.com/picbed/202212110942315.png" alt=""></p>
+<p>可以看到，自动回复都是基于 <code>chatgpt</code> 的，记得要开代理。</p>
+<p><img src="https://assets.fedtop.com/picbed/202212071317377.png" alt=""></p>
+<h2 id="常见问题">常见问题</h2>
+<ul>
+<li>怎么玩？ 完成自定义修改后，群聊时，在白名单中的群，有人 @你 时会触发自动回复，私聊中，联系人白名单中的人发消息给你时会触发自动回复。</li>
+<li>运行报错？检查 node 版本是否符合，如果不符合，升级 node 版本即可，检查依赖是否安装完整，如果不完整，大陆推荐切换下 npm 镜像源，然后重新安装依赖即可。（可以用我的 <a href="https://github.com/wangrongding/prm-cli">prm-cli</a> 工具快速切换）</li>
+<li>调整对话模式？可以修改<a href="./src/openai/index.js">openai/index.js</a> ,具体可以根据官方文档给出的示例（非常多，自己对应调整参数即可） ：<a href="https://beta.openai.com/examples">https://beta.openai.com/examples</a></li>
+</ul>
+<h2 id="如果你使用-docker">如果你使用 Docker</h2>
+<p>export https_proxy=http://124.222.160.182:7890 http_proxy=http://124.222.160.182:7890 all_proxy=socks5://124.222.160.182:7890</p>
+<pre><code class="language-sh">$ docker build . -t wechat-bot
+
+$ docker run -d --<span class="hljs-built_in">rm</span> --name wechat-bot -v $(<span class="hljs-built_in">pwd</span>)/config.js:/app/config.js -v $(<span class="hljs-built_in">pwd</span>)/.env:/app/.env wechat-bot
+</code></pre>
+
+        <script async src="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.js"></script>
+        
+    </body>
+    </html>

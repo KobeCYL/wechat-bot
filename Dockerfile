@@ -2,6 +2,7 @@ FROM debian:bullseye
 
 # Instal the 'apt-utils' package to solve the error 'debconf: delaying package configuration, since apt-utils is not installed'
 # https://peteris.rocks/blog/quiet-and-unattended-installation-with-apt-get/
+RUN export https_proxy=http://127.0.0.1:7890 http_proxy=http://127.0.0.1:7890 all_proxy=socks5://127.0.0.1:7890
 RUN apt-get update \
   && apt-get install -y --no-install-recommends \
     apt-utils \

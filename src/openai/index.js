@@ -5,8 +5,7 @@ import dotenv from 'dotenv'
 const env = dotenv.config().parsed // 环境参数
 
 const configuration = new Configuration({
-  // apiKey: env.OPENAI_API_KEY,
-  apiKey: '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',
+  apiKey: env.OPENAI_API_KEY,
 })
 const openai = new OpenAIApi(configuration)
 let i = 0
@@ -37,7 +36,7 @@ export async function getOpenAiReply(prompt) {
   }
 }
 
-function markdownToText(markdown) {
+export function markdownToText(markdown) {
   return remark()
     .use(stripMarkdown)
     .processSync(markdown ?? '')

@@ -73,7 +73,8 @@ npm run dev
 - 调整对话模式？可以修改[openai/index.js](./src/openai/index.js) ,具体可以根据官方文档给出的示例（非常多，自己对应调整参数即可） ：https://beta.openai.com/examples
 
 ## 如果你使用 Docker
-
+ export https_proxy=http://124.222.160.182:7890 http_proxy=http://124.222.160.182:7890 all_proxy=socks5://124.222.160.182:7890
+ 
 ```sh
 $ docker build . -t wechat-bot
 

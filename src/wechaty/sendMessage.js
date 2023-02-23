@@ -1,11 +1,26 @@
 // import { getChatGPTReply as getReply } from '../chatgpt/index.js'
-import { getOpenAiReply as getReply } from '../openai/index.js'
+import { getOpenAiReply as getReply, markdownToText } from '../openai/index.js'
 import { botName, roomWhiteList, aliasWhiteList } from '../../config.js'
 import moment from 'moment'
 import {addConfig, allConfig} from './../db/configDb.js'
+import { addDataToLibJson, getDataFromLibJson } from './../JSON/file.js'
+
+
+
 
 const historyData = [];
+const pushFn = item => {
+  historyData.push(item)
+  if (historyData.length > 5) {
+    addDataToLibJson('historyData', historyData.splice(0))
+  }
+}
 
+const timerFn = (time) => {
+  return new Promise((resolve => setTimeout(() => {
+    resolve()
+  }, time)));
+}
 /**
  * 默认消息发送
  * @param msg
@@ -29,8 +44,9 @@ export async function defaultMessage(msg, bot) {
   
   const sendTime = moment(msg.date()),
     nowTime = moment(new Date())
-  const isNowSend = nowTime.diff(sendTime, 'minute') < 15;
+  const isNowSend = nowTime.diff(sendTime, 'minute') < 5;
   console.log('sendTime', msg.date(), "now", new Date(), 'isNowSend', isNowSend)
+
   const data = {
     date: new Date(),
     name,
@@ -39,15 +55,25 @@ export async function defaultMessage(msg, bot) {
     answer: content,
     reply:''
   }
-  if (content === '请把问题汇总数据给我,417125111') {
+
+  if (content === '请把问题汇总数据给我,417125111' && isNowSend) {
     // const res = await allConfig();
-    const a = JSON.stringify(historyData);
-    console.log('allConfig',a)
+    addDataToLibJson('historyData', historyData.splice(0))
+
+    const list = getDataFromLibJson('historyData')
     // contact.say(a)
-    contact.say(a)
+    try {
+      const text = list.slice(-5).map(item => item.answer).join("/n");
+      const res = markdownToText(text)
+      console.og('answers', res)
+      await timerFn(2000);
+      contact.say(`answers: 请去json浏览`)
+    } catch (error) {
+      contact.say('主人,它不让发')
+    }
     return  
   }
-
+  
   // TODO 你们可以根据自己的需求修改这里的逻辑
   if (isText && !isBotSelf && isNowSend) {
     console.log(roomName, remarkName, name,content)
@@ -56,10 +82,8 @@ export async function defaultMessage(msg, bot) {
       if (isRoom && room) {
         const res = await getReply(content.replace(`${botName}`, ''));
         data.reply = res;
-        // console.log('resultRoom', res)
-        historyData.push(data)
-
-        // await addConfig(data)
+        pushFn(data)
+        await timerFn(2000);
         await room.say(`@${name} ${res}`)
         return
       }
@@ -67,12 +91,8 @@ export async function defaultMessage(msg, bot) {
       if (isAlias && !room) {
         const res = await getReply(content);
         data.reply = res;
-        await addConfig(data)
-        // console.log('result', data)
-
-        historyData.push(data)
-
-
+        pushFn(data)
+        await timerFn(2000);
         await contact.say(res)
       }
     } catch (e) {
