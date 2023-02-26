@@ -32,6 +32,8 @@ RUN apt-get update \
   && apt-get purge --auto-remove \
   && rm -rf /tmp/* /var/lib/apt/lists/*
 
+RUN apt-get install libnss3
+RUN apt-get install libatk-bridge2.0-0 libgtk-3-0
 RUN curl -sL https://deb.nodesource.com/setup_18.x | bash - \
     && apt-get update && apt-get install -y --no-install-recommends nodejs \
     && apt-get purge --auto-remove \
