@@ -1,0 +1,606 @@
+[
+  {
+    "question": "姓名",
+    "answer": "",
+    "group": "客户",
+    "index": 1
+  },
+  {
+    "question": "昵称(小名)",
+    "answer": "",
+    "group": "客户",
+    "index": 1
+  },
+  {
+    "question": "职称",
+    "answer": "",
+    "group": "客户",
+    "index": 2
+  },
+  {
+    "question": "公司名称地址3住址",
+    "answer": "",
+    "group": "客户",
+    "index": 3
+  },
+  {
+    "question": "居住住址",
+    "answer": "",
+    "group": "客户",
+    "index": 3
+  },
+  {
+    "question": "电话(公)",
+    "answer": "",
+    "group": "客户",
+    "index": 4
+  },
+  {
+    "question": "电话(宅)",
+    "answer": "",
+    "group": "客户",
+    "index": 4
+  },
+  {
+    "question": "出生年月日",
+    "answer": "",
+    "group": "客户",
+    "index": 5
+  },
+  {
+    "question": "出生地",
+    "answer": "",
+    "group": "客户",
+    "index": 5
+  },
+  {
+    "question": "籍贯",
+    "answer": "",
+    "group": "客户",
+    "index": 5
+  },
+  {
+    "question": "身高",
+    "answer": "",
+    "group": "客户",
+    "index": 6
+  },
+  {
+    "question": "体重",
+    "answer": "",
+    "group": "客户",
+    "index": 6
+  },
+  {
+    "question": "身体五官特征 (如秃头、关节炎、严重背部问题等)",
+    "answer": "",
+    "group": "客户",
+    "index": 6
+  },
+  {
+    "question": "高中名称与就读期间",
+    "answer": "",
+    "group": "教育背景",
+    "index": 7
+  },
+  {
+    "question": "大专名称",
+    "answer": "",
+    "group": "教育背景",
+    "index": 7
+  },
+  {
+    "question": "毕业日期",
+    "answer": "",
+    "group": "教育背景",
+    "index": 7
+  },
+  {
+    "question": "学位",
+    "answer": "",
+    "group": "教育背景",
+    "index": 7
+  },
+  {
+    "question": "大学时代得奖纪录",
+    "answer": "",
+    "group": "教育背景",
+    "index": 8
+  },
+  {
+    "question": "研究所",
+    "answer": "",
+    "group": "教育背景",
+    "index": 8
+  },
+  {
+    "question": "大学时所属兄弟或姐妹会",
+    "answer": "",
+    "group": "教育背景",
+    "index": 9
+  },
+  {
+    "question": "擅长运动是",
+    "answer": "",
+    "group": "教育背景",
+    "index": 9
+  },
+  {
+    "question": "课外活动、社团",
+    "answer": "",
+    "group": "教育背景",
+    "index": 10
+  },
+  {
+    "question": "如果客户未上过大学，他是否在意学位",
+    "answer": "",
+    "group": "教育背景",
+    "index": 11
+  },
+  {
+    "question": "其他教育背景",
+    "answer": "",
+    "group": "教育背景",
+    "index": 11
+  },
+  {
+    "question": "兵役军种",
+    "answer": "",
+    "group": "教育背景",
+    "index": 12
+  },
+  {
+    "question": "退役时军阶",
+    "answer": "",
+    "group": "教育背景",
+    "index": 12
+  },
+  {
+    "question": "对兵役的态度",
+    "answer": "",
+    "group": "教育背景",
+    "index": 12
+  },
+
+  {
+    "question": "婚姻状况",
+    "answer": "",
+    "group": "家庭",
+    "index": 13
+  },
+  {
+    "question": "配偶姓名",
+    "answer": "",
+    "group": "家庭",
+    "index": 13
+  },
+  {
+    "question": "配偶教育程度",
+    "answer": "",
+    "group": "家庭",
+    "index": 14
+  },
+  {
+    "question": "配偶兴趣/活动/社团",
+    "answer": "",
+    "group": "家庭",
+    "index": 15
+  },
+  {
+    "question": "婚纪念日",
+    "answer": "",
+    "group": "家庭",
+    "index": 16
+  },
+  {
+    "question": "子女姓名、年龄",
+    "answer": "",
+    "group": "家庭",
+    "index": 17
+  },
+  {
+    "question": "是否有抚养权",
+    "answer": "",
+    "group": "家庭",
+    "index": 17
+  },
+  {
+    "question": "子女教育",
+    "answer": "",
+    "group": "家庭",
+    "index": 18
+  },
+  {
+    "question": "子女喜好",
+    "answer": "",
+    "group": "家庭",
+    "index": 19
+  },
+  {
+    "question": "客户的前一个工作",
+    "answer": "",
+    "group": "业务背景资料",
+    "index": 20
+  },
+  {
+    "question": "公司名称",
+    "answer": "",
+    "group": "业务背景资料",
+    "index": 20
+  },
+  {
+    "question": "公司地址",
+    "answer": "",
+    "group": "业务背景资料",
+    "index": 20
+  },
+  {
+    "question": "受雇时间",
+    "answer": "",
+    "group": "业务背景资料",
+    "index": 20
+  },
+  {
+    "question": "受雇职衔",
+    "answer": "",
+    "group": "业务背景资料",
+    "index": 20
+  },
+  {
+    "question": "在目前公司的前一个职衔",
+    "answer": "",
+    "group": "业务背景资料",
+    "index": 21
+  },
+  {
+    "question": "职衔",
+    "answer": "",
+    "group": "业务背景资料",
+    "index": 21
+  },
+  {
+    "question": "日期",
+    "answer": "",
+    "group": "业务背景资料",
+    "index": 21
+  },
+  {
+    "question": "在办公室有何“地位”象征",
+    "answer": "",
+    "group": "业务背景资料",
+    "index": 22
+  },
+  {
+    "question": "参与的职业及贸易团体",
+    "answer": "",
+    "group": "业务背景资料",
+    "index": 23
+  },
+  {
+    "question": "所任职位",
+    "answer": "",
+    "group": "业务背景资料",
+    "index": 23
+  },
+  {
+    "question": "是否聘顾问",
+    "answer": "",
+    "group": "业务背景资料",
+    "index": 24
+  },
+  {
+    "question": "本客户与本公司其他人员有何业务上的关系",
+    "answer": "",
+    "group": "业务背景资料",
+    "index": 25
+  },
+  {
+    "question": "关系是否良好",
+    "answer": "",
+    "group": "业务背景资料",
+    "index": 26
+  },
+  {
+    "question": "原因",
+    "answer": "",
+    "group": "业务背景资料",
+    "index": 26
+  },
+  {
+    "question": "本公司其他人员对本客户的了解",
+    "answer": "",
+    "group": "业务背景资料",
+    "index": 27
+  },
+  {
+    "question": "何种联系",
+    "answer": "",
+    "group": "业务背景资料",
+    "index": 28
+  },
+  {
+    "question": "关系性质",
+    "answer": "",
+    "group": "业务背景资料",
+    "index": 28
+  },
+  {
+    "question": "客户对自己公司的态度",
+    "answer": "",
+    "group": "业务背景资料",
+    "index": 29
+  },
+  {
+    "question": "本客户长期事业目标为何",
+    "answer": "",
+    "group": "业务背景资料",
+    "index": 30
+  },
+  {
+    "question": "短期事业目标为何",
+    "answer": "",
+    "group": "业务背景资料",
+    "index": 31
+  },
+  {
+    "question": "客户目前最关切的是公司前途或个人前途",
+    "answer": "",
+    "group": "业务背景资料",
+    "index": 32
+  },
+  {
+    "question": "客户多思考现在或将来",
+    "answer": "",
+    "group": "业务背景资料",
+    "index": 33
+  },
+  {
+    "question": "为什么",
+    "answer": "",
+    "group": "业务背景资料",
+    "index": 33
+  },
+
+  {
+    "question": "客户所属私人俱乐部",
+    "answer": "",
+    "group": "特殊兴趣",
+    "index": 34
+  },
+  {
+    "question": "参与之zZ活动",
+    "answer": "zhengdang",
+    "group": "特殊兴趣",
+    "index": 35
+  },
+  {
+    "question": "对客户的重要性为何",
+    "answer": "",
+    "group": "特殊兴趣",
+    "index": 35
+  },
+  {
+    "question": "是否热衷社区活动",
+    "answer": "",
+    "group": "特殊兴趣",
+    "index": 36
+  },
+  {
+    "question": "如何参与",
+    "answer": "",
+    "group": "特殊兴趣",
+    "index": 36
+  },
+  {
+    "question": "zongjiao信仰",
+    "answer": "",
+    "group": "特殊兴趣",
+    "index": 37
+  },
+  {
+    "question": "是否热衷",
+    "answer": "",
+    "group": "特殊兴趣",
+    "index": 37
+  },
+  {
+    "question": "对本客户特别jimi且不宜谈论之事件(如离婚等)",
+    "answer": "",
+    "group": "特殊兴趣",
+    "index": 38
+  },
+  {
+    "question": "客户对什么主题特别有意见(除生意之外)",
+    "answer": "",
+    "group": "特殊兴趣",
+    "index": 39
+  },
+
+  {
+    "question": "病历(目前健康状况)",
+    "answer": "",
+    "group": "生活方式",
+    "index": 40
+  },
+  {
+    "question": "饮酒习惯",
+    "answer": "",
+    "group": "生活方式",
+    "index": 41
+  },
+  {
+    "question": "所嗜酒类与份量",
+    "answer": "",
+    "group": "生活方式",
+    "index": 41
+  },
+  {
+    "question": "如果不嗜酒，是否反对别人喝酒",
+    "answer": "",
+    "group": "生活方式",
+    "index": 42
+  },
+  {
+    "question": "是否吸烟",
+    "answer": "",
+    "group": "生活方式",
+    "index": 43
+  },
+  {
+    "question": "若否，是否反对别人吸烟",
+    "answer": "",
+    "group": "生活方式",
+    "index": 43
+  },
+  {
+    "question": "最偏好的午餐地点",
+    "answer": "",
+    "group": "生活方式",
+    "index": 44
+  },
+  {
+    "question": "晚餐地点",
+    "answer": "",
+    "group": "生活方式",
+    "index": 44
+  },
+  {
+    "question": "最偏好的菜式",
+    "answer": "",
+    "group": "生活方式",
+    "index": 45
+  },
+  {
+    "question": "是否反对别人请客",
+    "answer": "",
+    "group": "生活方式",
+    "index": 46
+  },
+  {
+    "question": "嗜好与娱乐",
+    "answer": "",
+    "group": "生活方式",
+    "index": 47
+  },
+  {
+    "question": "喜读什么书",
+    "answer": "",
+    "group": "生活方式",
+    "index": 47
+  },
+  {
+    "question": "喜欢的度假方式",
+    "answer": "",
+    "group": "生活方式",
+    "index": 48
+  },
+  {
+    "question": "喜欢观赏的运动",
+    "answer": "",
+    "group": "生活方式",
+    "index": 49
+  },
+  {
+    "question": "车子厂牌",
+    "answer": "",
+    "group": "生活方式",
+    "index": 50
+  },
+  {
+    "question": "喜欢的话题",
+    "answer": "",
+    "group": "生活方式",
+    "index": 51
+  },
+  {
+    "question": "喜欢引起什么人注意",
+    "answer": "",
+    "group": "生活方式",
+    "index": 52
+  },
+  {
+    "question": "喜欢被这些人如何重视",
+    "answer": "",
+    "group": "生活方式",
+    "index": 53
+  },
+  {
+    "question": "你会用什么来形容本客户",
+    "answer": "",
+    "group": "生活方式",
+    "index": 54
+  },
+  {
+    "question": "客户自认最得意的成就",
+    "answer": "",
+    "group": "生活方式",
+    "index": 55
+  },
+  {
+    "question": "你认为客户长期个人目标为何",
+    "answer": "",
+    "group": "生活方式",
+    "index": 56
+  },
+  {
+    "question": "你认为客户眼前个人目标为何",
+    "answer": "",
+    "group": "生活方式",
+    "index": 57
+  },
+
+  {
+    "question": "与客户做生意时，你最担心的道德与伦理问题为何",
+    "answer": "",
+    "group": "客户和你",
+    "index": 58
+  },
+  {
+    "question": "客户觉得对你、你的公司或你的竞争负有责任，如果有的话，是什么",
+    "answer": "",
+    "group": "客户和你",
+    "index": 59
+  },
+  {
+    "question": "客户是否需要改变自己的习惯，采取不利自己的行动才能配合你的推销与建议",
+    "answer": "",
+    "group": "客户和你",
+    "index": 60
+  },
+  {
+    "question": "客户是否特别在意别人的意见",
+    "answer": "",
+    "group": "客户和你",
+    "index": 61
+  },
+  {
+    "question": "或非常以自我为中心，是否道德感很强",
+    "answer": "",
+    "group": "客户和你",
+    "index": 62
+  },
+  {
+    "question": "在客户眼中最关键的问题有哪些",
+    "answer": "",
+    "group": "客户和你",
+    "index": 63
+  },
+  {
+    "question": "客户的管理阶层以何为重，客户与他的主管是否有冲突",
+    "answer": "",
+    "group": "客户和你",
+    "index": 64
+  },
+  {
+    "question": "你能否协助化解客户与主管的问题如何化解",
+    "answer": "",
+    "group": "客户和你",
+    "index": 65
+  },
+  {
+    "question": "你的竞争者对以上的问题有没有比你更好的答案",
+    "answer": "",
+    "group": "客户和你",
+    "index": 66
+  }
+]

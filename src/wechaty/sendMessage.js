@@ -2,14 +2,11 @@
 import { getOpenAiReply as getReply, markdownToText } from '../openai/index.js'
 import { botName, roomWhiteList, aliasWhiteList } from '../../config.js'
 import moment from 'moment'
-import {addConfig, allConfig} from './../db/configDb.js'
+import { addConfig, allConfig } from './../db/configDb.js'
 import { addDataToLibJson, getDataFromLibJson } from './../JSON/file.js'
 
-
-
-
-const historyData = [];
-const pushFn = item => {
+const historyData = []
+const pushFn = (item) => {
   historyData.push(item)
   if (historyData.length > 5) {
     addDataToLibJson('historyData', historyData.splice(0))
@@ -17,9 +14,11 @@ const pushFn = item => {
 }
 
 const timerFn = (time) => {
-  return new Promise((resolve => setTimeout(() => {
-    resolve()
-  }, time)));
+  return new Promise((resolve) =>
+    setTimeout(() => {
+      resolve()
+    }, time),
+  )
 }
 /**
  * 默认消息发送
@@ -32,6 +31,7 @@ export async function defaultMessage(msg, bot) {
   const receiver = msg.to() // 消息接收人
   const content = msg.text() // 消息内容
   const room = msg.room() // 是否是群消息
+
   const roomName = (await room?.topic()) || null // 群名称
   const alias = (await contact.alias()) || (await contact.name()) // 发消息人昵称
   const remarkName = await contact.alias() // 备注名称
@@ -40,12 +40,11 @@ export async function defaultMessage(msg, bot) {
   const isRoom = (roomWhiteList.includes(roomName) || true) && content.includes(`${botName}`) // 是否在群聊白名单内并且艾特了机器人
   const isAlias = aliasWhiteList.includes(remarkName) || aliasWhiteList.includes(name) || true // 发消息的人是否在联系人白名单内
   const isBotSelf = botName === remarkName || botName === name // 是否是机器人自己
- 
-  
+
   const sendTime = moment(msg.date()),
     nowTime = moment(new Date())
-  const isNowSend = nowTime.diff(sendTime, 'minute') < 5;
-  console.log('sendTime', msg.date(), "now", new Date(), 'isNowSend', isNowSend)
+  const isNowSend = nowTime.diff(sendTime, 'minute') < 5
+  console.log('sendTime', msg.date(), 'now', new Date(), 'isNowSend', isNowSend)
 
   const data = {
     date: new Date(),
@@ -53,7 +52,7 @@ export async function defaultMessage(msg, bot) {
     remarkName,
     roomName,
     answer: content,
-    reply:''
+    reply: '',
   }
 
   if (content === '请把问题汇总数据给我,417125111' && isNowSend) {
@@ -63,40 +62,43 @@ export async function defaultMessage(msg, bot) {
     const list = getDataFromLibJson('historyData')
     // contact.say(a)
     try {
-      const text = list.slice(-5).map(item => item.answer).join("/n");
+      const text = list
+        .slice(-5)
+        .map((item) => item.answer)
+        .join('/n')
       const res = markdownToText(text)
       console.og('answers', res)
-      await timerFn(2000);
+      await timerFn(2000)
       contact.say(`answers: 请去json浏览`)
     } catch (error) {
       contact.say('主人,它不让发')
     }
-    return  
+    return
   }
-  
+
   // TODO 你们可以根据自己的需求修改这里的逻辑
   if (isText && !isBotSelf && isNowSend) {
-    console.log(roomName, remarkName, name,content)
+    console.log(roomName, remarkName, name, content)
     try {
       // 区分群聊和私聊
       if (isRoom && room) {
-        const res = await getReply(content.replace(`${botName}`, ''));
-        data.reply = res;
+        const res = await getReply(content.replace(`${botName}`, ''))
+        data.reply = res
         pushFn(data)
-        await timerFn(2000);
+        await timerFn(2000)
         await room.say(`@${name} ${res}`)
         return
       }
       // 私人聊天，白名单内的直接发送
       if (isAlias && !room) {
-        const res = await getReply(content);
-        data.reply = res;
+        const res = await getReply(content)
+        data.reply = res
         pushFn(data)
-        await timerFn(2000);
+        await timerFn(2000)
         await contact.say(res)
       }
     } catch (e) {
-      console.error('error',e)
+      console.error('error', e)
       contact.say(`主人, 机器人报错了`)
     }
   }
